@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using Challenge.Models.Entities;
@@ -26,13 +27,18 @@ namespace Challenge.Models.Repositories
 
         public async Task<List<Pokemon>> GetAll()
         {
-            var pokemons = await _pokemonContext.Pokemon.ToListAsync();
+            var pokemons = await _pokemonContext.Pokemon
+                .Include(p => p.PokemonType)
+                .Include(p => p.PokemonRarity)
+                .Include(p => p.ExpansionSet)
+                .ToListAsync();
             return pokemons;
         }
 
         public async Task<Pokemon> Get(string name)
         {
             var pokemon = await _pokemonContext.Pokemon.FirstOrDefaultAsync(x => x.Name == name);
+
             return pokemon;
         }
 

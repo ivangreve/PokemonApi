@@ -22,7 +22,7 @@ namespace Challenge.Controllers
             _pokemonService = pokemonService;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("GetAllCards")]
         public async Task<IActionResult> GetAll()
         {
             var pokemons = await _pokemonService.GetAllPokemons();

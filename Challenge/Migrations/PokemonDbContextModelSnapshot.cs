@@ -43,28 +43,28 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9675),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2680),
                             Deleted = false,
                             Expansion = "Base Set"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9889),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2894),
                             Deleted = false,
                             Expansion = "Jungle"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9891),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2896),
                             Deleted = false,
                             Expansion = "Fossil"
                         },
                         new
                         {
                             Id = 4L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9892),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2897),
                             Deleted = false,
                             Expansion = "Base Set 2"
                         });
@@ -85,10 +85,7 @@ namespace Challenge.Migrations
                     b.Property<bool?>("Deleted")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<int>("ExpansionSetId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("ExpansionSetId1")
+                    b.Property<long>("ExpansionSetId")
                         .HasColumnType("bigint");
 
                     b.Property<int>("Hp")
@@ -106,16 +103,10 @@ namespace Challenge.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("longtext");
 
-                    b.Property<int>("PokemonRarityId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("PokemonRarityId1")
+                    b.Property<long>("PokemonRarityId")
                         .HasColumnType("bigint");
 
-                    b.Property<int>("PokemonTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<long?>("PokemonTypeId1")
+                    b.Property<long>("PokemonTypeId")
                         .HasColumnType("bigint");
 
                     b.Property<double>("Price")
@@ -123,11 +114,11 @@ namespace Challenge.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ExpansionSetId1");
+                    b.HasIndex("ExpansionSetId");
 
-                    b.HasIndex("PokemonRarityId1");
+                    b.HasIndex("PokemonRarityId");
 
-                    b.HasIndex("PokemonTypeId1");
+                    b.HasIndex("PokemonTypeId");
 
                     b.ToTable("Pokemon");
 
@@ -135,31 +126,31 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 1L,
-                            CardCreationTime = new DateTime(2021, 12, 4, 20, 7, 33, 114, DateTimeKind.Local).AddTicks(1268),
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 114, DateTimeKind.Utc).AddTicks(80),
+                            CardCreationTime = new DateTime(2021, 12, 4, 20, 34, 25, 425, DateTimeKind.Local).AddTicks(4564),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(3084),
                             Deleted = false,
-                            ExpansionSetId = 1,
+                            ExpansionSetId = 1L,
                             Hp = 100,
                             Image = "https://i.pinimg.com/originals/dc/ab/b7/dcabb7fbb2f763d680d20a3d228cc6f9.jpg",
                             IsFirstEdition = true,
                             Name = "Pikachu",
-                            PokemonRarityId = 3,
-                            PokemonTypeId = 4,
+                            PokemonRarityId = 3L,
+                            PokemonTypeId = 4L,
                             Price = 0.0
                         },
                         new
                         {
                             Id = 2L,
-                            CardCreationTime = new DateTime(2021, 12, 4, 20, 7, 33, 114, DateTimeKind.Local).AddTicks(1750),
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 114, DateTimeKind.Utc).AddTicks(1746),
+                            CardCreationTime = new DateTime(2021, 12, 4, 20, 34, 25, 425, DateTimeKind.Local).AddTicks(5233),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(5229),
                             Deleted = false,
-                            ExpansionSetId = 1,
+                            ExpansionSetId = 1L,
                             Hp = 150,
                             Image = "https://static.wikia.nocookie.net/superpokemon/images/f/f2/Charmander.jpg/revision/latest?cb=20101205152949&path-prefix=es",
                             IsFirstEdition = false,
                             Name = "Charmander",
-                            PokemonRarityId = 3,
-                            PokemonTypeId = 2,
+                            PokemonRarityId = 3L,
+                            PokemonTypeId = 2L,
                             Price = 0.0
                         });
                 });
@@ -190,21 +181,21 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9151),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2256),
                             Deleted = false,
                             Rarity = "Comun"
                         },
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9463),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2484),
                             Deleted = false,
                             Rarity = "No Comun"
                         },
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(9465),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(2487),
                             Deleted = false,
                             Rarity = "Raro"
                         });
@@ -239,7 +230,7 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 1L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(8048),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(1184),
                             Deleted = false,
                             Description = "Tipo Agua",
                             Type = "Agua"
@@ -247,7 +238,7 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 2L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(8928),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(1987),
                             Deleted = false,
                             Description = "Tipo de Fuego",
                             Type = "Fuego"
@@ -255,7 +246,7 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 3L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(8931),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(1991),
                             Deleted = false,
                             Description = "Tipo Hierba",
                             Type = "Hierba"
@@ -263,7 +254,7 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 4L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(8932),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(1992),
                             Deleted = false,
                             Description = "Tipo Electrico",
                             Type = "Electrico"
@@ -271,7 +262,7 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 5L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(8933),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(1994),
                             Deleted = false,
                             Description = "Tipo Psiquico",
                             Type = "Psiquico"
@@ -279,7 +270,7 @@ namespace Challenge.Migrations
                         new
                         {
                             Id = 6L,
-                            CreatedDate = new DateTime(2021, 12, 4, 23, 7, 33, 113, DateTimeKind.Utc).AddTicks(8934),
+                            CreatedDate = new DateTime(2021, 12, 4, 23, 34, 25, 425, DateTimeKind.Utc).AddTicks(1995),
                             Deleted = false,
                             Description = "Tipo Normal",
                             Type = "Normal"
@@ -290,15 +281,21 @@ namespace Challenge.Migrations
                 {
                     b.HasOne("Challenge.Models.Entities.ExpansionSet", "ExpansionSet")
                         .WithMany()
-                        .HasForeignKey("ExpansionSetId1");
+                        .HasForeignKey("ExpansionSetId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Challenge.Models.Entities.PokemonRarity", "PokemonRarity")
                         .WithMany()
-                        .HasForeignKey("PokemonRarityId1");
+                        .HasForeignKey("PokemonRarityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Challenge.Models.Entities.PokemonType", "PokemonType")
                         .WithMany()
-                        .HasForeignKey("PokemonTypeId1");
+                        .HasForeignKey("PokemonTypeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ExpansionSet");
 
