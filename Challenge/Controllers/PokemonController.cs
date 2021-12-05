@@ -58,8 +58,9 @@ namespace Challenge.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] PokemonDto pokemon)
+        public IActionResult Update(long id, [FromBody] PokemonDto pokemonDto)
         {
+            _pokemonService.Update(id, pokemonDto);
             return Ok(new PokemonDto());
 
         }

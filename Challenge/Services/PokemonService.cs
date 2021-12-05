@@ -16,6 +16,7 @@ namespace Challenge.Services
         Task<Pokemon> GetByName(string name);
         Task<Pokemon> GetById(long id);
         void Create(PokemonDto pokemonDto);
+        void Update(long id, PokemonDto pokemonDto);
     }
     public class PokemonService: IPokemonService
     {
@@ -48,6 +49,28 @@ namespace Challenge.Services
             var pokemonEntity = new Pokemon(pokemonDto);
             _pokemonRepository.Create(pokemonEntity);
             _pokemonRepository.SaveChanges();
-        } 
+        }
+
+        public async void Update(long id, PokemonDto pokemonDto)
+        {
+            // var oldEntity = await _pokemonRepository.GetById(id);
+
+            var pokemonEntity = new Pokemon
+            {
+                Id = id,
+                Name = pokemonDto.Name,
+                Hp = pokemonDto.Hp,
+                IsFirstEdition = pokemonDto.IsFirstEdition,
+                ExpansionSetId = pokemonDto.ExpansionSetId,
+                PokemonTypeId = pokemonDto.PokemonTypeId,
+                PokemonRarityId = pokemonDto.PokemonRarityId,
+                Price = pokemonDto.Price,
+                Image = pokemonDto.Image,
+                CardCreationTime = pokemonDto.CardCreationTime
+            };
+
+            _pokemonRepository.Update(pokemonEntity);
+            _pokemonRepository.SaveChanges();
+        }
     }
 }
