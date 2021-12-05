@@ -47,6 +47,8 @@ namespace Challenge
             services.AddScoped<IPokemonService, PokemonService>();
             services.AddScoped<IPokemonTypeRepository, PokemonTypeRepository>();
             services.AddScoped<IPokemonTypeService, PokemonTypeService>();
+            services.AddScoped<IPokemonRarityRepository, PokemonRarityRepository>();
+            services.AddScoped<IPokemonRarityService, PokemonRarityService>();
 
             services.AddSwaggerGen(c =>
             {

@@ -35,7 +35,6 @@ namespace Challenge.Controllers
             return Ok(pokemons);
         }
 
-        // GET: api/Pokemons/Name/Pikachu
         [HttpGet]
         [Route("Name/{name}")]
         public async Task<IActionResult> GetByName(string name)
@@ -44,7 +43,6 @@ namespace Challenge.Controllers
             return Ok(pokemons);
         }
 
-        // GET: api/Pokemons/Id/1
         [HttpGet]
         [Route("Id/{id}")]
         public async Task<IActionResult> GetById(long id)
@@ -64,15 +62,17 @@ namespace Challenge.Controllers
         public async Task<IActionResult> Update(long id, [FromBody] PokemonDto pokemonDto)
         {
             var result = await _pokemonService.Update(id, pokemonDto);
-            if (!result) return BadRequest("Error al modificar la Carta");
+            if (!result) return BadRequest("Error al modificar la carta.");
 
             return Ok();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(long id)
+        public async Task<IActionResult> Delete(long id)
         {
-            return Ok(new PokemonDto());
+            var result = await _pokemonService.Delete(id);
+            if (!result) return BadRequest("Error al eliminar la carta.");
+            return Ok();
 
         }
 

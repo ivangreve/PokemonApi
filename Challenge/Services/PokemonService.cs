@@ -18,6 +18,7 @@ namespace Challenge.Services
         Task<Pokemon> GetById(long id);
         void Create(PokemonDto pokemonDto);
         Task<bool> Update(long id, PokemonDto pokemonDto);
+        Task<bool> Delete(long id);
     }
     public class PokemonService: IPokemonService
     {
@@ -73,6 +74,16 @@ namespace Challenge.Services
             };
 
             _pokemonRepository.Update(pokemonEntity);
+            _pokemonRepository.SaveChanges();
+            return true;
+        }
+
+        public async Task<bool> Delete(long id)
+        {
+            var existingPokemon = await _pokemonRepository.GetById(id);
+            if (existingPokemon == null) return false;
+
+            _pokemonRepository.Delete(existingPokemon);
             _pokemonRepository.SaveChanges();
             return true;
         }

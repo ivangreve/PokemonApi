@@ -14,26 +14,25 @@ using Microsoft.EntityFrameworkCore;
 namespace Challenge.Controllers
 {
     [ApiController]
-    [Route("api/PokemonsType")]
-    public class PokemonTypeController : ControllerBase
+    [Route("api/PokemonRarity")]
+    public class PokemonRarityController : ControllerBase
     {
-        private readonly IPokemonTypeService _pokemonTypeService;
+        private readonly IPokemonRarityService _pokemonRarityService;
 
-        public PokemonTypeController(IPokemonTypeService pokemonTypeService)
+        public PokemonRarityController(IPokemonRarityService pokemonRarityService)
         {
-            _pokemonTypeService = pokemonTypeService;
+            _pokemonRarityService = pokemonRarityService;
         }
 
-        // GET: api/PokemonsType/GetAllTypes
+        // GET: api/PokemonRarity/GetAllRarities
         [HttpGet]
-        [Route("GetAllTypes")]
-        [ProducesResponseType(typeof(List<PokemonTypes>), StatusCodes.Status200OK)]
+        [Route("GetAllRarities")]
+        [ProducesResponseType(typeof(List<PokemonRarity>), StatusCodes.Status200OK)]
         [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAll()
         {
-
-            var pokemons = await _pokemonTypeService.GetAllTypes();
-            return Ok(pokemons);
+            var rarities = await _pokemonRarityService.GetAllRarities();
+            return Ok(rarities);
         }
 
     }
