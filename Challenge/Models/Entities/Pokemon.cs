@@ -1,10 +1,24 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using Challenge.Contracts.Requests;
 
 namespace Challenge.Models.Entities
 {
     public class Pokemon: EntityBase
     {
+        public Pokemon(){}
+        public Pokemon(PokemonDto pokemonDto)
+        {
+            Name = pokemonDto.Name;
+            Hp = pokemonDto.Hp;
+            IsFirstEdition = pokemonDto.IsFirstEdition;
+            ExpansionSetId = pokemonDto.ExpansionSetId;
+            PokemonTypeId = pokemonDto.PokemonTypeId;
+            PokemonRarityId = pokemonDto.PokemonRarityId;
+            Price = pokemonDto.Price;
+            Image = pokemonDto.Image;
+            CardCreationTime = pokemonDto.CardCreationTime;
+        }
         public string Name { get; set; }
         public int Hp { get; set; }
         public bool IsFirstEdition { get; set; }

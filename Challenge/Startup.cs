@@ -51,6 +51,13 @@ namespace Challenge
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge", Version = "v1" });
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
 
         }
         
@@ -72,5 +79,6 @@ namespace Challenge
                 endpoints.MapControllers();
             });
         }
+
     }
 }
