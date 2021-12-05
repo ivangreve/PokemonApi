@@ -16,9 +16,9 @@ namespace Challenge.Services
         Task<List<Pokemon>> GetAllPokemons();
         Task<Pokemon> GetByName(string name);
         Task<Pokemon> GetById(long id);
-        void Create(PokemonDto pokemonDto);
-        Task<bool> Update(long id, PokemonDto pokemonDto);
-        Task<bool> Delete(long id);
+        Task Create(PokemonDto pokemonDto);
+        Task Update(long id, PokemonDto pokemonDto);
+        Task Delete(long id);
     }
     public class PokemonService: IPokemonService
     {
@@ -46,18 +46,18 @@ namespace Challenge.Services
             return pokemon;
         }
 
-        public void Create(PokemonDto pokemonDto)
+        public async Task Create(PokemonDto pokemonDto)
         {
             var pokemonEntity = new Pokemon(pokemonDto);
             _pokemonRepository.Create(pokemonEntity);
             _pokemonRepository.SaveChanges();
         }
 
-        public async Task<bool> Update(long id, PokemonDto pokemonDto)
+        public async Task Update(long id, PokemonDto pokemonDto)
         {
             var existingPokemon = await _pokemonRepository.GetById(id);
 
-            if (existingPokemon == null) return false;
+            if (existingPokemon == null) throw new ArgumentException("Pokemon inexistente");
 
             var pokemonEntity = new Pokemon
             {
@@ -75,17 +75,17 @@ namespace Challenge.Services
 
             _pokemonRepository.Update(pokemonEntity);
             _pokemonRepository.SaveChanges();
-            return true;
         }
 
-        public async Task<bool> Delete(long id)
+        public async Task Delete(long id)
         {
             var existingPokemon = await _pokemonRepository.GetById(id);
-            if (existingPokemon == null) return false;
+
+            if (existingPokemon == null) throw new ArgumentException("Pokemon inexistente");
 
             _pokemonRepository.Delete(existingPokemon);
             _pokemonRepository.SaveChanges();
-            return true;
+
         }
     }
 }

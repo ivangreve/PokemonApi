@@ -1,20 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using Challenge.Contracts.Requests;
 using Challenge.Contracts.Responses;
 using Challenge.Models.Entities;
 using Challenge.Services;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 
 namespace Challenge.Controllers
 {
     [ApiController]
-    [Route("api/Pokemons")]
+    [Route("api/PokemonCard")]
     public class PokemonController : ControllerBase
     {
         private readonly IPokemonService _pokemonService;
@@ -24,11 +20,9 @@ namespace Challenge.Controllers
             _pokemonService = pokemonService;
         }
 
-        // GET: api/Pokemons/GetAllCards
+        // GET: api/PokemonCard/GetAll
         [HttpGet]
-        [Route("GetAllCards")]
-        [ProducesResponseType(typeof(List<Pokemon>), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
+        [Route("GetAll")]
         public async Task<IActionResult> GetAll()
         {
             var pokemons = await _pokemonService.GetAllPokemons();
@@ -52,28 +46,24 @@ namespace Challenge.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] PokemonDto pokemonDto)
+        public async Task<IActionResult> Create([FromBody] PokemonDto pokemonDto)
         {
-            _pokemonService.Create(pokemonDto);
-            return Ok(new PokemonDto());
+            await _pokemonService.Create(pokemonDto);
+            return Ok();
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(long id, [FromBody] PokemonDto pokemonDto)
         {
-            var result = await _pokemonService.Update(id, pokemonDto);
-            if (!result) return BadRequest("Error al modificar la carta.");
-
+            await _pokemonService.Update(id, pokemonDto);
             return Ok();
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {
-            var result = await _pokemonService.Delete(id);
-            if (!result) return BadRequest("Error al eliminar la carta.");
+            await _pokemonService.Delete(id);
             return Ok();
-
         }
 
     }
