@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Challenge.Models.Entities
+﻿namespace Challenge.Models.Entities
 {
     public class PokemonTypes: EntityBase
     {

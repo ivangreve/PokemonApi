@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Challenge.Contracts.Requests;
-using Challenge.Contracts.Responses;
 using Challenge.Models.Entities;
 using Challenge.Models.Repositories;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Challenge.Services
 {

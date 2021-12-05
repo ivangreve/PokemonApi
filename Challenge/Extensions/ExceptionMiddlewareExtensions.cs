@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Challenge.Contracts.Responses;
-using Challenge.Middlewares;
+﻿using Challenge.Middlewares;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Http;
 
 namespace Challenge.Extensions
 {

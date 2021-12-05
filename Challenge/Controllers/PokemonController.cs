@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Challenge.Contracts.Requests;
-using Challenge.Contracts.Responses;
-using Challenge.Models.Entities;
 using Challenge.Services;
-using Microsoft.AspNetCore.Http;
 
 namespace Challenge.Controllers
 {

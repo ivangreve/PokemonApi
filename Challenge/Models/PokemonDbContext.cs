@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Configuration;
 using Challenge.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
