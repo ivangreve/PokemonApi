@@ -8,6 +8,7 @@ using Challenge.Contracts.Requests;
 using Challenge.Contracts.Responses;
 using Challenge.Models.Entities;
 using Challenge.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 
 namespace Challenge.Controllers
@@ -16,7 +17,6 @@ namespace Challenge.Controllers
     [Route("api/Pokemons")]
     public class PokemonController : ControllerBase
     {
-        private readonly ILogger<PokemonController> _logger;
         private readonly IPokemonService _pokemonService;
 
         public PokemonController(IPokemonService pokemonService)
@@ -24,15 +24,18 @@ namespace Challenge.Controllers
             _pokemonService = pokemonService;
         }
 
+        // GET: api/Pokemons/GetAllCards
         [HttpGet]
         [Route("GetAllCards")]
+        [ProducesResponseType(typeof(List<Pokemon>), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(BadRequestResponse), StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> GetAll()
         {
             var pokemons = await _pokemonService.GetAllPokemons();
             return Ok(pokemons);
         }
 
-        // GET: api/Pokemons/id/1
+        // GET: api/Pokemons/Name/Pikachu
         [HttpGet]
         [Route("Name/{name}")]
         public async Task<IActionResult> GetByName(string name)
@@ -41,7 +44,7 @@ namespace Challenge.Controllers
             return Ok(pokemons);
         }
 
-        // GET: api/Pokemons/name/5
+        // GET: api/Pokemons/Id/1
         [HttpGet]
         [Route("Id/{id}")]
         public async Task<IActionResult> GetById(long id)
@@ -58,11 +61,12 @@ namespace Challenge.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] PokemonDto pokemonDto)
+        public async Task<IActionResult> Update(long id, [FromBody] PokemonDto pokemonDto)
         {
-            _pokemonService.Update(id, pokemonDto);
-            return Ok(new PokemonDto());
+            var result = await _pokemonService.Update(id, pokemonDto);
+            if (!result) return BadRequest("Error al modificar la Carta");
 
+            return Ok();
         }
 
         [HttpDelete("{id}")]

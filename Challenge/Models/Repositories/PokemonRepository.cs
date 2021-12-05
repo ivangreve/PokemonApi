@@ -27,7 +27,7 @@ namespace Challenge.Models.Repositories
         public async Task<List<Pokemon>> GetAll()
         {
             var pokemons = await _pokemonContext.Pokemon
-                .Include(p => p.PokemonType)
+                .Include(p => p.PokemonTypes)
                 .Include(p => p.PokemonRarity)
                 .Include(p => p.ExpansionSet)
                 .ToListAsync();
@@ -37,7 +37,7 @@ namespace Challenge.Models.Repositories
         public async Task<Pokemon> GetByName(string name)
         {
             var pokemon = await _pokemonContext.Pokemon
-                .Include(p => p.PokemonType)
+                .Include(p => p.PokemonTypes)
                 .Include(p => p.PokemonRarity)
                 .Include(p => p.ExpansionSet)
                 .FirstOrDefaultAsync(x => x.Name == name);
@@ -48,7 +48,7 @@ namespace Challenge.Models.Repositories
         public async Task<Pokemon> GetById(long id)
         {
             var pokemon = await _pokemonContext.Pokemon
-                .Include(p => p.PokemonType)
+                .Include(p => p.PokemonTypes)
                 .Include(p => p.PokemonRarity)
                 .Include(p => p.ExpansionSet)
                 .FirstOrDefaultAsync(x => x.Id == id);

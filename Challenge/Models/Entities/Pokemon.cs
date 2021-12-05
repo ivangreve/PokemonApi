@@ -27,7 +27,7 @@ namespace Challenge.Models.Entities
         public ExpansionSet ExpansionSet { get; set; }
         public long PokemonTypeId { get; set; }
         [ForeignKey("PokemonTypeId")]
-        public PokemonType PokemonType { get; set; }
+        public PokemonTypes PokemonTypes { get; set; }
         public long PokemonRarityId { get; set; }
         [ForeignKey("PokemonRarityId")]
         public PokemonRarity PokemonRarity { get; set; }

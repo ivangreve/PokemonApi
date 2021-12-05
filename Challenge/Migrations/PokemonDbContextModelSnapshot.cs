@@ -201,7 +201,7 @@ namespace Challenge.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Challenge.Models.Entities.PokemonType", b =>
+            modelBuilder.Entity("Challenge.Models.Entities.PokemonTypes", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -291,7 +291,7 @@ namespace Challenge.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Challenge.Models.Entities.PokemonType", "PokemonType")
+                    b.HasOne("Challenge.Models.Entities.PokemonTypes", "PokemonTypes")
                         .WithMany()
                         .HasForeignKey("PokemonTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -301,7 +301,7 @@ namespace Challenge.Migrations
 
                     b.Navigation("PokemonRarity");
 
-                    b.Navigation("PokemonType");
+                    b.Navigation("PokemonTypes");
                 });
 #pragma warning restore 612, 618
         }

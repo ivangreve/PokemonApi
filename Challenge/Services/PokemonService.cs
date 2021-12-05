@@ -7,6 +7,7 @@ using Challenge.Contracts.Requests;
 using Challenge.Contracts.Responses;
 using Challenge.Models.Entities;
 using Challenge.Models.Repositories;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace Challenge.Services
 {
@@ -16,7 +17,7 @@ namespace Challenge.Services
         Task<Pokemon> GetByName(string name);
         Task<Pokemon> GetById(long id);
         void Create(PokemonDto pokemonDto);
-        void Update(long id, PokemonDto pokemonDto);
+        Task<bool> Update(long id, PokemonDto pokemonDto);
     }
     public class PokemonService: IPokemonService
     {
@@ -51,9 +52,11 @@ namespace Challenge.Services
             _pokemonRepository.SaveChanges();
         }
 
-        public async void Update(long id, PokemonDto pokemonDto)
+        public async Task<bool> Update(long id, PokemonDto pokemonDto)
         {
-            // var oldEntity = await _pokemonRepository.GetById(id);
+            var existingPokemon = await _pokemonRepository.GetById(id);
+
+            if (existingPokemon == null) return false;
 
             var pokemonEntity = new Pokemon
             {
@@ -71,6 +74,7 @@ namespace Challenge.Services
 
             _pokemonRepository.Update(pokemonEntity);
             _pokemonRepository.SaveChanges();
+            return true;
         }
     }
 }

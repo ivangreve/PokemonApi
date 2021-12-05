@@ -16,7 +16,7 @@ namespace Challenge.Models
         }
 
         public DbSet<Pokemon> Pokemon { get; set; }
-        public DbSet<PokemonType> PokemonTypes { get; set; }
+        public DbSet<PokemonTypes> PokemonTypes { get; set; }
         public DbSet<PokemonRarity> PokemonRarity { get; set; }
         public DbSet<ExpansionSet> ExpansionSet { get; set; }
 
@@ -27,14 +27,14 @@ namespace Challenge.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             #region seed data
-            var pokemonTypes = new PokemonType[]
+            var pokemonTypes = new PokemonTypes[]
             {
-                new PokemonType { Id = 1, Type = "Agua", Description = "Tipo Agua" },
-                new PokemonType { Id = 2, Type = "Fuego", Description = "Tipo de Fuego" },
-                new PokemonType { Id = 3, Type = "Hierba", Description = "Tipo Hierba" },
-                new PokemonType { Id = 4, Type = "Electrico", Description = "Tipo Electrico" },
-                new PokemonType { Id = 5, Type = "Psiquico", Description = "Tipo Psiquico" },
-                new PokemonType { Id = 6, Type = "Normal", Description = "Tipo Normal" },
+                new PokemonTypes { Id = 1, Type = "Agua", Description = "Tipo Agua" },
+                new PokemonTypes { Id = 2, Type = "Fuego", Description = "Tipo de Fuego" },
+                new PokemonTypes { Id = 3, Type = "Hierba", Description = "Tipo Hierba" },
+                new PokemonTypes { Id = 4, Type = "Electrico", Description = "Tipo Electrico" },
+                new PokemonTypes { Id = 5, Type = "Psiquico", Description = "Tipo Psiquico" },
+                new PokemonTypes { Id = 6, Type = "Normal", Description = "Tipo Normal" },
             };
 
             var pokemonRarities = new PokemonRarity[]
@@ -78,7 +78,7 @@ namespace Challenge.Models
 
 
             modelBuilder.Entity<PokemonRarity>().HasData(pokemonRarities);
-            modelBuilder.Entity<PokemonType>().HasData(pokemonTypes);
+            modelBuilder.Entity<PokemonTypes>().HasData(pokemonTypes);
             modelBuilder.Entity<ExpansionSet>().HasData(pokemonExpansions);
             modelBuilder.Entity<Pokemon>().HasData(pokemons);
 
