@@ -1,14 +1,52 @@
-version: '3.7'
+version: '3.8'
 
 services:
+
   engine_service:
-    container_name: challenge
-    image: challenge:latest
+    container_name: engine_pokemon
+    image: engine_pokemon:latest
     depends_on:
-      - 'sql-server-db'
+      - 'mysql_service'
     build:
-      context: './Challenge'
+      context: './src/engine/Engine.Api'
       dockerfile: ./Dockerfile
     ports:
       - '5000:7000'
+    networks:
+      - backend_network
     restart: always
+    env_file:
+      - ./env_files/.engine.env
+
+
+  mysql_service:
+    container_name: mysql_service
+    image: mysql:5.7
+    restart: always
+    networks:
+      - backend_network
+    environment:
+      MYSQL_DATABASE: 'pokemon'
+      # So you don't have to use root, but you can if you like
+      MYSQL_USER: 'user'
+      # You can use whatever password you like
+      MYSQL_PASSWORD: 'password'
+      # Password for root access
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      # <Port exposed> : < MySQL Port running inside container>
+      - '3306:3306'
+    expose:
+      # Opens port 13306 on the container
+      - '3306'
+      # Where our data will be persisted
+    volumes:
+      - my-db:/var/lib/mysql
+
+networks:
+  backend_network:
+    driver: bridge
+
+# Names our volume
+volumes:
+  my-db:

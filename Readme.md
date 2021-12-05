@@ -15,7 +15,33 @@ dotnet ef database update
 dotnet run
 
 
-docker run --name sqlserver --hostname sqlserver -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=password_segura_mssql" -p 1433:1433 -d mcr.microsoft.com/mssql/server:2019-latest 
+==== MySql Container creation ===
+
+docker pull mysql
+docker images
+docker run -d -p 13306:3306 --name mysql_service -e MYSQL_ROOT_PASSWORD=password mysql:latest --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
 
 
-mysql://challenge-pokemon-db:123456@35.222.39.142:3306/pokemondb
+// Me logeo con el user root y password configurada "password"
+docker exec -it mysql_container mysql -uroot -p 
+
+// Configuro el user
+create user 'mysqluser' identified by 'password';
+grant all privileges on *.* TO 'mysqluser'@'%';
+
+
+
+
+==============================
+
+{
+  "name": "Mewtwo",
+  "hp": 999,
+  "isFirstEdition": true,
+  "expansionSetId": 2,
+  "pokemonTypeId": 5,
+  "pokemonRarityId": 3,
+  "price": 99999,
+  "image": "https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png",
+  "cardCreationTime": "2021-12-05T17:29:47.419Z"
+}
