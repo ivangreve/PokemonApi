@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using Challenge.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Challenge.Controllers
 {
     [ApiController]
     [Route("api/PokemonRarity")]
+    [Authorize]
     public class PokemonRarityController : ControllerBase
     {
         private readonly IPokemonRarityService _pokemonRarityService;
@@ -15,7 +17,6 @@ namespace Challenge.Controllers
             _pokemonRarityService = pokemonRarityService;
         }
 
-        // GET: api/PokemonRarity/GetAllRarities
         [HttpGet]
         [Route("GetAllRarities")]
         public async Task<IActionResult> GetAll()

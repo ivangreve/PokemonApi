@@ -8,6 +8,7 @@ namespace Challenge.Controllers
 {
     [ApiController]
     [Route("api/Auth")]
+    [Authorize]
     public class AuthController : ControllerBase
     {
         private readonly IJwtAuthenticationService _authorizationService;

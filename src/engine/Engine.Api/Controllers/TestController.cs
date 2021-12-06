@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Challenge.Controllers
 {
@@ -12,8 +13,8 @@ namespace Challenge.Controllers
         }
 
         [HttpGet]
-        [Route("HelthCheck")]
-        public IActionResult HelthCheck()
+        [Route("HealthStatus")]
+        public IActionResult HealthStatus()
         {
 
             return Ok(new { Status = "Api is alive" });
@@ -25,6 +26,23 @@ namespace Challenge.Controllers
         public IActionResult ExceptionHandlingCheck()
         {
             throw new ArgumentException("Testing exception middleware handling");
+        }
+
+
+        [HttpGet]
+        [Authorize]
+        [Route("TestSecureEnpoint")]
+        public IActionResult TestSecureEnpoint()
+        {
+            return Ok();
+        }
+
+
+        [HttpGet]
+        [Route("TestNonSecureEnpoint")]
+        public IActionResult TestNonSecureEnpoint()
+        {
+            return Ok();
         }
     }
 }
