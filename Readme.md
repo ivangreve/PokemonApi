@@ -43,7 +43,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6I
 2. Correr proyecto
 - En la carpeta raíz ejecutar: `dotnet run`
 
-_NOTA: Tener en cuenta que habrá que modificar el server de la ConnectionString **(appSettings.json)** de mysql_service a localhost (ó server utilizado) ya que al se configuraron los conteiners para correr dentro de una misma network_
+_NOTA: Tener en cuenta que habrá que modificar el server de la ConnectionString **(appSettings.json)** de mysql_service a localhost (ó server utilizado) ya que se configuraron los containers para correr dentro de una misma network_
 
 ## xUnitTest 🪲🧪
 1. Ir a la carpeta **src/engine/EngineApi.Test**.
