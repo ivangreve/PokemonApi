@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Challenge", "Challenge.csproj", "{8952B8E8-F3A3-4B6F-A01D-B6CCE694D3DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Challenge", "Challenge.csproj", "{8952B8E8-F3A3-4B6F-A01D-B6CCE694D3DD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineApi.Test", "..\EngineApi.Test\EngineApi.Test.csproj", "{48B26B7D-F2DF-4139-B42E-A569A75A1402}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{8952B8E8-F3A3-4B6F-A01D-B6CCE694D3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8952B8E8-F3A3-4B6F-A01D-B6CCE694D3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8952B8E8-F3A3-4B6F-A01D-B6CCE694D3DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48B26B7D-F2DF-4139-B42E-A569A75A1402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48B26B7D-F2DF-4139-B42E-A569A75A1402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48B26B7D-F2DF-4139-B42E-A569A75A1402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48B26B7D-F2DF-4139-B42E-A569A75A1402}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
