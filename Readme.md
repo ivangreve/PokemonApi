@@ -36,8 +36,17 @@ _NOTA: Se utilizaron estas credenciales harcodeadas por cuestion de tiempo, lo q
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InBva2Vtb251c2VyIiwibmJmIjoxNjM4NzU3MTA4LCJleHAiOjE2Mzg3NjA3MDgsImlhdCI6MTYzODc1NzEwOH0.GL6i-dwNPcLTVPFjI2wRbnMwd29eCO0az_w2eq2TA1o
 ```
+## En caso de querer correr el proyecto en modo dev 🧑‍💻
+1. Build proyect.
+- En la carpeta **src/engine/Engine.Api** ejecutar: `dotnet build`
 
-## Useful knowledge
+2. Correr proyecto
+- En la carpeta raíz ejecutar: `dotnet run`
+
+_NOTA: Tener en cuenta que habrá que modificar el server de la ConnectionString **(appSettings.json)** de mysql_service a localhost (ó server utilizado) ya que al se configuraron los conteiners para correr dentro de una misma network_
+
+
+## Useful knowledge 🧠
 
 Si no se desea correr todos los servicios ejecutar:  `docker-compose up <serviceName>` command.
 

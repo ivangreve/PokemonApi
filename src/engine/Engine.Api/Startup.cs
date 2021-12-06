@@ -44,10 +44,10 @@ namespace Challenge
             services.AddScoped<IPokemonTypeService, PokemonTypeService>();
             services.AddScoped<IPokemonRarityRepository, PokemonRarityRepository>();
             services.AddScoped<IPokemonRarityService, PokemonRarityService>();
+            services.AddScoped<IExpansionSetRepository, ExpansionSetRepository>();
+            services.AddScoped<IExpansionSetService, ExpansionSetService>();
 
             services.AddSwaggerDocumentation();
-
-
 
             services.AddCors(options =>
             {
