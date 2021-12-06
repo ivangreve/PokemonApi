@@ -29,10 +29,9 @@
 _NOTA: Se utilizaron estas credenciales harcodeadas por cuestion de tiempo, lo que habría que hacer es crear algún método que valide los datos persistidos en una alguna tabla de usuarios, ó utilizar algún otro método como OAuth_
 
 2. Agregar Authorization Header al request:
-```json
+```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InBva2Vtb251c2VyIiwibmJmIjoxNjM4NzU3MTA4LCJleHAiOjE2Mzg3NjA3MDgsImlhdCI6MTYzODc1NzEwOH0.GL6i-dwNPcLTVPFjI2wRbnMwd29eCO0az_w2eq2TA1o
 ```
-
 
 ## Used Technologies/Tools 🪛
 
@@ -41,3 +40,5 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6I
 - [Docker](https://docker.com/)
 - [SwaggerUI](https://swagger.io/)
 - [Json Web Token](https://jwt.io/)
+
+##
