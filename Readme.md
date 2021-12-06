@@ -45,6 +45,13 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6I
 
 _NOTA: Tener en cuenta que habrá que modificar el server de la ConnectionString **(appSettings.json)** de mysql_service a localhost (ó server utilizado) ya que al se configuraron los conteiners para correr dentro de una misma network_
 
+## xUnitTest 🪲🧪
+1. Ir a la carpeta **src/engine/EngineApi.Test**.
+
+2. Correr test
+- Ejecutar: `dotnet test`
+
+_NOTA: Se hicieron solo 4 Test sobre el Controller de Pokemon a modo de ejemplo._
 
 ## Useful knowledge 🧠
 
