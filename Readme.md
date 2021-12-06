@@ -1,5 +1,9 @@
 # Pokemon API 
 
+### Pre-requisitos
+- Instalar **Docker**.
+  - Engine version 20.10 (at least).
+
 ### API con Docker 🐋
 
 1. Clonar el proyecto
@@ -32,6 +36,15 @@ _NOTA: Se utilizaron estas credenciales harcodeadas por cuestion de tiempo, lo q
 ```
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InBva2Vtb251c2VyIiwibmJmIjoxNjM4NzU3MTA4LCJleHAiOjE2Mzg3NjA3MDgsImlhdCI6MTYzODc1NzEwOH0.GL6i-dwNPcLTVPFjI2wRbnMwd29eCO0az_w2eq2TA1o
 ```
+
+## Useful knowledge
+
+Si no se desea correr todos los servicios ejecutar:  `docker-compose up <serviceName>` command.
+
+Example:
+- DataBase service: `docker-compose up mysql_service`
+- Backend service: `docker-compose up engine_pokemon`
+
 
 ## Used Technologies/Tools 🪛
 
