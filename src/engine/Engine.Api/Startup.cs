@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -9,6 +10,9 @@ using Challenge.Models.Repositories;
 using Challenge.Services;
 using Microsoft.EntityFrameworkCore;
 using Challenge.Extensions;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Challenge
 {
@@ -41,10 +45,9 @@ namespace Challenge
             services.AddScoped<IPokemonRarityRepository, PokemonRarityRepository>();
             services.AddScoped<IPokemonRarityService, PokemonRarityService>();
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Challenge", Version = "v1" });
-            });
+            services.AddSwaggerDocumentation();
+
+
 
             services.AddCors(options =>
             {
@@ -53,6 +56,35 @@ namespace Challenge
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+
+            var secretKey = Configuration.GetSection("SecretKey").Value;
+            services.AddRouting(options => options.LowercaseUrls = true);
+            services.AddControllers()
+                .AddJsonOptions(options =>
+                {
+                    options.JsonSerializerOptions.IgnoreNullValues = true;
+                    options.JsonSerializerOptions.WriteIndented = true;
+                });
+            services
+                .AddAuthentication(x =>
+                {
+                    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                })
+                .AddJwtBearer(x =>
+                {
+                    x.RequireHttpsMetadata = false;
+                    x.SaveToken = true;
+                    x.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(secretKey)),
+                        ValidateAudience = false,
+                        ValidateIssuerSigningKey = true,
+                        ValidateIssuer = false
+                    };
+                });
+            services.AddAuthorization();
+            services.AddSingleton<IJwtAuthenticationService>(new JwtAuthenticationService(secretKey));
 
         }
         
@@ -66,12 +98,13 @@ namespace Challenge
             }    
             
             app.UseHttpsRedirection();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "PokemonApi v1"));
+            app.UseSwaggerDocumentation();
             app.ConfigureCustomExceptionMiddleware();
 
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();

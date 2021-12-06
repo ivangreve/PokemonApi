@@ -2,11 +2,13 @@
 using System.Threading.Tasks;
 using Challenge.Contracts.Requests;
 using Challenge.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Challenge.Controllers
 {
     [ApiController]
     [Route("api/PokemonCard")]
+    [Authorize]
     public class PokemonController : ControllerBase
     {
         private readonly IPokemonService _pokemonService;
